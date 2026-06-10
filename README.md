@@ -108,7 +108,7 @@ The system is built on a relational database designed to represent the maternal-
 ```text
 neoCare_dashboard/
 
-├── app.py
+├── Overview.py
 ├── pages/
 │   ├── Mothers.py
 │   ├── Pregnancy.py
@@ -122,7 +122,7 @@ neoCare_dashboard/
 │   └── queries/
 │
 ├── components/
-│   ├── header.py
+│   ├── theme.py
 │   ├── sidebar.py
 │   └── footer.py
 │
@@ -162,7 +162,7 @@ neoCare_dashboard/
 ### Clone repository
 
 ```bash
-git clone https://github.com/your-username/neoCare_dashboard.git
+git clone https://github.com/valehd/neoCare_dashboard.git
 cd neoCare_dashboard
 ```
 
@@ -206,7 +206,7 @@ DB_NAME=maternal_database
 ### Run application
 
 ```bash
-streamlit run app.py
+streamlit run Overview.py
 ```
 
 ---
