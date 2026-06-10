@@ -7,17 +7,20 @@ import plotly.express as px
 from components.footer import show_footer
 from components.sidebar import show_sidebar
 from components.styles import neocare_css
+from components.header import show_header
 from components.theme import neocare_colors
 from database.queries.newborn import get_newborns
 
 
+show_header()
+show_sidebar()
+neocare_css()
+
 # ==========================
 # PAGE TITLE
 # ==========================
-st.title("👶 Newborn Analysis")
+st.title("Newborn Analysis")
 
-show_sidebar()
-neocare_css()
 # ==========================
 # DATA
 # ==========================

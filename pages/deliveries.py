@@ -8,7 +8,7 @@ from components.styles import neocare_css
 from components.theme import neocare_colors
 from components.footer import show_footer
 from components.sidebar import show_sidebar
-
+from components.header import show_header
 from database.queries.deliveries import get_deliveries
 
 
@@ -16,12 +16,13 @@ from database.queries.deliveries import get_deliveries
 # SIDEBAR
 # ==========================
 show_sidebar()
+show_header()
 neocare_css()
 
 # ==========================
 # PAGE TITLE
 # ==========================
-st.title("🚑 Labor and Delivery Analysis")
+st.title("Labor and Delivery Analysis")
 
 
 # ==========================

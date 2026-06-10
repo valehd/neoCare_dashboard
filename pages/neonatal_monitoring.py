@@ -6,6 +6,7 @@ import plotly.express as px
 import pandas as pd
 from components.theme import neocare_colors
 from components.footer import show_footer
+from components.header import show_header
 from components.sidebar import show_sidebar
 from components.styles import neocare_css
 from database.queries.neonatal_monitoring import (
@@ -17,11 +18,12 @@ from database.queries.neonatal_monitoring import (
 # ==========================
 show_sidebar()
 neocare_css()
+show_header()
 
 # ==========================
 # PAGE TITLE
 # ==========================
-st.title("🩺 Neonatal Monitoring")
+st.title("Neonatal Monitoring")
 
 # ==========================
 # DATA
