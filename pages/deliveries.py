@@ -16,8 +16,6 @@ from database.queries.deliveries import get_deliveries
 # ==========================
 show_sidebar()
 show_header()
-
-
 # ==========================
 # PAGE TITLE
 # ==========================

@@ -31,11 +31,9 @@ st.set_page_config(
 # ==========================
 show_sidebar()
 show_header()
-
 # ==========================    
 # DASHBOARD TITLE   
 # ==========================
-
 st.title("NeoCare Dashboard")
 st.caption(
     "Maternal and Neonatal Healthcare Analytics"
