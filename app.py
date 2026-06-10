@@ -3,7 +3,10 @@
 # ==========================
 import streamlit as st
 import plotly.express as px
+import pandas as pd
+from components.theme import neocare_colors
 from components.footer import show_footer
+from components.styles import neocare_css
 from components.sidebar import show_sidebar
 from database.queries.overview import (
     get_total_mothers,
@@ -22,16 +25,33 @@ st.set_page_config(
     layout="wide"
 )
 
+
+
+neocare_css()
+show_sidebar()
+
 # ==========================    
 # DASHBOARD TITLE   
 # ==========================
 
-st.title("🤰 NeoCare Dashboard")
+st.title("NeoCare Dashboard")
+st.caption(
+    "Maternal and Neonatal Healthcare Analytics"
+)
+
+st.info(
+    """
+    NeoCare Dashboard provides analytics and visualization
+    of maternal, pregnancy, delivery, newborn and neonatal
+    monitoring data.
+    """
+)
 
 # ==========================
 # OVERVIEW KPIs
 # ==========================
 
+st.subheader("Key Performance Indicators")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -55,28 +75,6 @@ col4.metric(
     get_total_newborns().iloc[0]["total"]
 )
 
-
-# ==========================
-# DELIVERY ANALYTICS
-# ==========================
-
-st.divider()
-
-st.subheader("Delivery Type Distribution")
-
-df_delivery = get_delivery_distribution()
-
-fig = px.pie(
-    df_delivery,
-    values="total",
-    names="delivery_type",
-    hole=0.4
-)
-
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
 
 
 # ==========================
@@ -109,5 +107,59 @@ col3.metric(
     round(avg_apgar_5, 1)
 )
 
+
+# ==========================
+# DELIVERY ANALYTICS
+# ==========================
+
+st.divider()
+
+st.subheader("Delivery Type Distribution")
+
+df_delivery = get_delivery_distribution()
+
+fig = px.pie(
+    df_delivery,
+    values="total",
+    names="delivery_type",
+    hole=0.4,
+    color_discrete_sequence=neocare_colors
+
+)
+
+
+apgar_chart = pd.DataFrame(
+    {
+        "Minute": ["1 min", "5 min"],
+        "Score": [
+            avg_apgar_1,
+            avg_apgar_5
+        ]
+    }
+)
+
+fig_apgar = px.bar(
+    apgar_chart,
+    x="Minute",
+    y="Score",
+    title="Average APGAR Scores",
+    color_discrete_sequence=neocare_colors
+)
+
+col1, col2 = st.columns(2)
+
+with col1:
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
+
+with col2:
+
+    st.plotly_chart(
+        fig_apgar,
+        use_container_width=True
+    )
+
 show_footer()
-show_sidebar()

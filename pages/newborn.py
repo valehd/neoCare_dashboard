@@ -6,6 +6,8 @@ import streamlit as st
 import plotly.express as px
 from components.footer import show_footer
 from components.sidebar import show_sidebar
+from components.styles import neocare_css
+from components.theme import neocare_colors
 from database.queries.newborn import get_newborns
 
 
@@ -14,32 +16,85 @@ from database.queries.newborn import get_newborns
 # ==========================
 st.title("👶 Newborn Analysis")
 
-
+show_sidebar()
+neocare_css()
 # ==========================
 # DATA
 # ==========================
 df = get_newborns()
 
+
+
+# ==========================
+# FILTERS
+# ==========================
+
+st.subheader("Filters")
+
+col1, col2 = st.columns(2)
+
+with col1:
+
+    selected_sex = st.selectbox(
+        "Sex",
+        ["All"] + sorted(
+            df["sex"].dropna().unique()
+        )
+    )
+
+with col2:
+
+    min_weight = int(df["weight_gr"].min())
+    max_weight = int(df["weight_gr"].max())
+
+    weight_range = st.slider(
+        "Birth Weight Range (g)",
+        min_weight,
+        max_weight,
+        (min_weight, max_weight)
+    )
+
+# ==========================
+# APPLY FILTERS
+# ==========================
+
+df_filtered = df.copy()
+
+# Sex filter
+if selected_sex != "All":
+
+    df_filtered = df_filtered[
+        df_filtered["sex"] == selected_sex
+    ]
+
+# Weight filter
+df_filtered = df_filtered[
+    (df_filtered["weight_gr"] >= weight_range[0]) &
+    (df_filtered["weight_gr"] <= weight_range[1])
+]
+
+
+
 col1, col2, col3, col4 = st.columns(4)
 
 col1.metric(
     "Total Newborns",
-    len(df)
+    len(df_filtered)
 )
 
 col2.metric(
     "Average Weight (g)",
-    round(df["weight_gr"].mean(), 0)
+    round(df_filtered["weight_gr"].mean(), 0)
 )
 
 col3.metric(
     "Average APGAR 1",
-    round(df["apgar_1"].mean(), 1)
+    round(df_filtered["apgar_1"].mean(), 1)
 )
 
 col4.metric(
     "Average APGAR 5",
-    round(df["apgar_5"].mean(), 1)
+    round(df_filtered["apgar_5"].mean(), 1)
 )
 
 st.divider()
@@ -49,10 +104,11 @@ col1, col2 = st.columns(2)
 with col1:
 
     fig_weight = px.histogram(
-        df,
+        df_filtered,
         x="weight_gr",
         nbins=15,
-        title="Birth Weight Distribution"
+        title="Birth Weight Distribution",
+        color_discrete_sequence=neocare_colors
     )
 
     st.plotly_chart(
@@ -62,7 +118,7 @@ with col1:
 
 
     sex_df = (
-    df["sex"]
+    df_filtered["sex"]
     .value_counts()
     .reset_index()
 )
@@ -79,7 +135,8 @@ with col2:
         values="total",
         names="sex",
         hole=0.4,
-        title="Sex Distribution"
+        title="Sex Distribution",
+        color_discrete_sequence=neocare_colors
     )
 
     st.plotly_chart(
@@ -90,11 +147,12 @@ with col2:
 
     st.subheader("APGAR Scores")
 
-apgar_df = df[["apgar_1", "apgar_5"]]
+apgar_df = df_filtered[["apgar_1", "apgar_5"]]
 
 fig_apgar = px.box(
     apgar_df,
-    title="APGAR Score Distribution"
+    title="APGAR Score Distribution",
+    color_discrete_sequence=neocare_colors
 )
 
 st.plotly_chart(
@@ -105,10 +163,11 @@ st.plotly_chart(
 st.subheader("Gestational Age")
 
 fig_ga = px.histogram(
-    df,
+    df_filtered,
     x="gestational_age_physical_exam",
     nbins=10,
-    title="Gestational Age Distribution"
+    title="Gestational Age Distribution",
+    color_discrete_sequence=neocare_colors
 )
 
 st.plotly_chart(
@@ -119,15 +178,16 @@ st.plotly_chart(
 
 st.subheader("Newborn Records")
 
-display_df = df.drop(
+display_df = df_filtered.drop(
     columns=["id_newborn", "id_delivery"],
     errors="ignore"
 )
 
-st.dataframe(
-    display_df,
-    use_container_width=True
-)
+with st.expander("View Records"):
+
+    st.dataframe(
+        display_df,
+        use_container_width=True
+    )
 
 show_footer()
-show_sidebar()
