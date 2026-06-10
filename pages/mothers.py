@@ -12,10 +12,11 @@ from database.queries.mothers import (
 )
 
 # ==========================
-# SIDEBAR
+# SIDEBAR- HEADER
 # ==========================
 show_sidebar()
 show_header()
+
 # ==========================
 # PAGE TITLE
 # ==========================

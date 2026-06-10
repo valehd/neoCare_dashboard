@@ -12,7 +12,7 @@ from database.queries.deliveries import get_deliveries
 
 
 # ==========================
-# SIDEBAR
+# SIDEBAR-HEADER
 # ==========================
 show_sidebar()
 show_header()

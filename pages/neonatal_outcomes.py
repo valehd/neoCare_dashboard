@@ -12,7 +12,7 @@ from database.queries.neonatal_outcomes import (
 )
 
 # ==========================
-# SIDEBAR
+# SIDEBAR - HEADER
 # ==========================
 show_sidebar()
 show_header()

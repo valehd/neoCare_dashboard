@@ -13,10 +13,9 @@ from database.queries.neonatal_monitoring import (
 )
 
 # ==========================
-# SIDEBAR
+# SIDEBAR- HEADER
 # ==========================
 show_sidebar()
-
 show_header()
 
 # ==========================

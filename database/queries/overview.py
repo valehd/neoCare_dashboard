@@ -1,6 +1,4 @@
-# ==========================
-# IMPORTS
-# ==========================
+
 import pandas as pd
 from database.connection import get_connection
 

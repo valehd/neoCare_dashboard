@@ -26,6 +26,9 @@ st.set_page_config(
 )
 
 
+# ==========================
+# SIDEBAR - HEADER
+# ==========================
 show_sidebar()
 show_header()
 

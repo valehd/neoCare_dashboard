@@ -11,6 +11,10 @@ from components.theme import neocare_colors
 from database.queries.newborn import get_newborns
 
 
+
+# ==========================
+# SIDEBAR - HEADER
+# ==========================
 show_header()
 show_sidebar()
 

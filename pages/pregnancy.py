@@ -13,10 +13,11 @@ from database.queries.pregnancies import (
 )
 
 # ==========================
-# SIDEBAR
+# SIDEBAR - HEADER
 # ==========================
 show_sidebar()
 show_header()
+
 # ==========================
 # PAGE TITLE
 # ==========================
