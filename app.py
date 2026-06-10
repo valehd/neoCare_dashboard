@@ -4,6 +4,7 @@
 import streamlit as st
 import plotly.express as px
 from components.footer import show_footer
+from components.sidebar import show_sidebar
 from database.queries.overview import (
     get_total_mothers,
     get_total_pregnancies,
@@ -109,3 +110,4 @@ col3.metric(
 )
 
 show_footer()
+show_sidebar()
