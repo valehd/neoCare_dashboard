@@ -4,6 +4,7 @@
 import streamlit as st
 import plotly.express as px
 from components.footer import show_footer
+from components.sidebar import show_sidebar
 from database.queries.neonatal_outcomes import get_neonatal_outcomes
 
 # ==========================
@@ -70,3 +71,4 @@ st.metric(
 )
 
 show_footer()
+show_sidebar()

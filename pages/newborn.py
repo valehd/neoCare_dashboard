@@ -5,6 +5,7 @@
 import streamlit as st
 import plotly.express as px
 from components.footer import show_footer
+from components.sidebar import show_sidebar
 from database.queries.newborn import get_newborns
 
 
@@ -129,3 +130,4 @@ st.dataframe(
 )
 
 show_footer()
+show_sidebar()

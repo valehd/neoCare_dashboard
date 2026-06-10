@@ -5,6 +5,7 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 from components.footer import show_footer
+from components.sidebar import show_sidebar
 from database.queries.deliveries import get_deliveries
 
 # ==========================
@@ -128,3 +129,4 @@ st.plotly_chart(
 )
 
 show_footer()
+show_sidebar()

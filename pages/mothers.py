@@ -4,6 +4,7 @@
 import streamlit as st
 import plotly.express as px
 from components.footer import show_footer
+from components.sidebar import show_sidebar
 from database.queries.mothers import (
     get_mothers,
     get_maternal_conditions_distribution
@@ -129,3 +130,4 @@ st.dataframe(
 # FOOTER
 # ==========================
 show_footer()
+show_sidebar()
