@@ -1,94 +1,81 @@
 # NeoCare Dashboard
 
-## Overview
+## Maternal & Neonatal Healthcare Analytics Platform
 
-NeoCare Dashboard is a full-stack healthcare application designed to support maternal and neonatal monitoring through structured clinical data collection, analytics, and interactive dashboards.
+NeoCare Dashboard is a healthcare analytics application designed to monitor and analyze maternal and neonatal clinical data through interactive dashboards and visualizations.
 
-The system models the maternal-neonatal care pathway, from pregnancy and labor to neonatal adaptation during the first hours of life.
+The project models the complete maternal-neonatal care pathway, from pregnancy and labor to newborn adaptation and neonatal outcomes.
 
-This project was developed as part of my transition from Neonatal Intensive Care Unit (NICU) Midwife to Software Engineering, combining clinical expertise with software development.
-
----
-
-## Project Objectives
-
-* Design and implement a relational healthcare database.
-* Build RESTful APIs for clinical data management.
-* Visualize maternal and neonatal indicators through dashboards.
-* Apply software engineering principles to a real-world healthcare scenario.
+Developed as part of my transition from Neonatal Intensive Care Unit (NICU) Midwife to Software Engineering, NeoCare combines healthcare domain expertise with data analytics and software development.
 
 ---
 
-## Core Modules
+## Features
 
-### Maternal Information
+### Overview Dashboard
 
-* Maternal demographics
-* Blood type
-* Previous pregnancies
-* Previous delivery history
-* Associated maternal conditions
+* Maternal, pregnancy, delivery, and newborn KPIs
+* Delivery type distribution
+* Birth weight and APGAR score indicators
+* Executive summary of healthcare activity
+
+### Maternal Analysis
+
+* Maternal age distribution
+* Blood type distribution
+* Maternal risk factors analysis
+* Interactive filtering by age, condition, and blood type
 
 ### Pregnancy Management
 
-* Prenatal gestational age
-* Pregnancy-related conditions
-* Clinical observations
+* Gestational age analysis
+* Prenatal control monitoring
+* Multiple pregnancy tracking
+* Pregnancy condition distribution
 
-### Labor and Delivery
+### Labor & Delivery Analytics
 
-* Type of delivery
-* Rupture of membranes duration
-* Antibiotic administration
-* Oxytocin use
-* Significant companion during labor
-* Intrapartum monitoring
-* Number of vaginal examinations
-* Delivery outcome
+* Delivery type analysis
+* Rupture of membranes monitoring
+* Clinical intervention indicators
+* Birth outcome analysis
 
-### Newborn Assessment
+### Newborn Analysis
 
-* Birth date and time
-* Sex
-* Birth weight
-* Length
-* Gestational age by physical examination
-* APGAR scores
+* Birth weight distribution
+* APGAR score monitoring
+* Sex distribution
+* Gestational age assessment
 
 ### Neonatal Monitoring
 
-* First-hour vital signs
-* Second-hour vital signs
-* Urination and stool elimination
-* Neonatal destination
-* Hospitalization tracking
-
----
-
-## Planned Dashboard Metrics
-
-* Birth statistics
-* Delivery type distribution
-* Gestational age analysis
-* APGAR score trends
-* Birth weight distribution
-* Maternal risk factors
-* Neonatal hospitalization rates
+* Vital signs monitoring
+* Heart rate trends
+* Respiratory rate analysis
+* Temperature monitoring
+* Oxygen saturation tracking
 * Neonatal adaptation indicators
+
+### Neonatal Outcomes
+
+* Neonatal destination analysis
+* Hospital admission tracking
+* Outcome monitoring and visualization
 
 ---
 
 ## Technology Stack
 
-### Backend
+### Programming & Data
 
 * Python
 * Pandas
+* SQL
 
-### Dashboard
+### Dashboard & Visualization
+
 * Streamlit
 * Plotly
-
 
 ### Database
 
@@ -101,7 +88,11 @@ This project was developed as part of my transition from Neonatal Intensive Care
 
 ---
 
-## Database Entities
+## Database Design
+
+The system is built on a relational database designed to represent the maternal-neonatal care process.
+
+### Main Entities
 
 * Mother
 * Pregnancy
@@ -112,20 +103,135 @@ This project was developed as part of my transition from Neonatal Intensive Care
 
 ---
 
-## Future Enhancements
+## Project Structure
 
-* Authentication and authorization
+```text
+neoCare_dashboard/
+
+├── app.py
+├── pages/
+│   ├── Mothers.py
+│   ├── Pregnancy.py
+│   ├── Deliveries.py
+│   ├── Newborn.py
+│   ├── Monitoring.py
+│   └── Outcomes.py
+│
+├── database/
+│   ├── connection.py
+│   └── queries/
+│
+├── components/
+│   ├── header.py
+│   ├── sidebar.py
+│   └── footer.py
+│
+├── assets/
+│   ├── logo/
+│   └── screenshots/
+│
+├── .env.example
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Screenshots
+
+### Overview
+
+*Add screenshot here*
+
+### Maternal Analysis
+
+*Add screenshot here*
+
+### Labor & Delivery
+
+*Add screenshot here*
+
+### Neonatal Monitoring
+
+*Add screenshot here*
+
+---
+
+## Installation
+
+### Clone repository
+
+```bash
+git clone https://github.com/your-username/neoCare_dashboard.git
+cd neoCare_dashboard
+```
+
+### Create virtual environment
+
+```bash
+python -m venv venv
+```
+
+### Activate environment
+
+Mac/Linux
+
+```bash
+source venv/bin/activate
+```
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Configure environment variables
+
+Create a `.env` file based on `.env.example`.
+
+```env
+DB_HOST=localhost
+DB_USER=your_user
+DB_PASSWORD=your_password
+DB_NAME=maternal_database
+```
+
+### Run application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## Future Improvements
+
+* User authentication and authorization
+* Data export to Excel and PDF
 * Clinical report generation
-* Data export functionality
-* Advanced analytics
-* Healthcare quality indicators
+* Advanced healthcare KPIs
+* Predictive analytics
+* Deployment to cloud infrastructure
 
 ---
 
 ## Author
 
-Valentina Hernández
+### Valentina Hernández
 
-Software Engineering Student | Former NICU Midwife
+Former NICU Midwife transitioning into Software Engineering.
 
-Focused on Healthcare Technology, Health Informatics, and Digital Transformation.
+Interested in:
+
+* Healthcare Technology
+* Health Informatics
+* Data Analytics
+* SQL & Database Development
+* Digital Health Transformation

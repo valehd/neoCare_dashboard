@@ -6,7 +6,6 @@ import plotly.express as px
 import pandas as pd
 from components.theme import neocare_colors
 from components.footer import show_footer
-from components.header import show_header
 from components.sidebar import show_sidebar
 from database.queries.overview import (
     get_total_mothers,
@@ -25,12 +24,10 @@ st.set_page_config(
     layout="wide"
 )
 
-
-# ==========================
+# =========================
 # SIDEBAR - HEADER
 # ==========================
 show_sidebar()
-show_header()
 # ==========================    
 # DASHBOARD TITLE   
 # ==========================
@@ -55,25 +52,33 @@ st.subheader("Key Performance Indicators")
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "Mothers",
-    get_total_mothers().iloc[0]["total"]
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Mothers",
+            get_total_mothers().iloc[0]["total"]
+        )
 
-col2.metric(
-    "Pregnancies",
-    get_total_pregnancies().iloc[0]["total"]
-)
+with col2:
+    with st.container(border=True):
+        st.metric(
+            "Pregnancies",
+            get_total_pregnancies().iloc[0]["total"]
+        )
 
-col3.metric(
-    "Deliveries",
-    get_total_deliveries().iloc[0]["total"]
-)
+with col3:
+    with st.container(border=True):
+        st.metric(
+            "Deliveries",
+            get_total_deliveries().iloc[0]["total"]
+        )
 
-col4.metric(
-    "Newborns",
-    get_total_newborns().iloc[0]["total"]
-)
+with col4:
+    with st.container(border=True):
+        st.metric(
+            "Newborns",
+            get_total_newborns().iloc[0]["total"]
+        )
 
 
 
@@ -92,20 +97,26 @@ st.divider()
 
 col1, col2, col3 = st.columns(3)
 
-col1.metric(
-    "Average Birth Weight (g)",
-    round(avg_weight, 0)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Average Birth Weight (g)",
+            round(avg_weight, 0)
+        )
 
-col2.metric(
+with col2:
+    with st.container(border=True):
+        st.metric(
     "Avg APGAR 1 min",
     round(avg_apgar_1, 1)
 )
 
-col3.metric(
-    "Avg APGAR 5 min",
-    round(avg_apgar_5, 1)
-)
+with col3:
+    with st.container(border=True):
+        st.metric(
+            "Avg APGAR 5 min",
+            round(avg_apgar_5, 1)
+        )
 
 
 # ==========================

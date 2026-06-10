@@ -4,7 +4,6 @@
 import streamlit as st
 import plotly.express as px
 from components.theme import neocare_colors
-from components.header import show_header
 from components.footer import show_footer
 from components.sidebar import show_sidebar
 
@@ -16,7 +15,7 @@ from database.queries.pregnancies import (
 # SIDEBAR - HEADER
 # ==========================
 show_sidebar()
-show_header()
+
 
 # ==========================
 # PAGE TITLE
@@ -99,12 +98,16 @@ if condition_filter != "All":
 # ==========================
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "Total Pregnancies",
-    len(df_filtered)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Total Pregnancies",
+            len(df_filtered)
+        )
 
-col2.metric(
+with col2:
+    with st.container(border=True):
+        st.metric(
     "Average Gestational Age",
     round(
         df_filtered["gestational_age_prenatal"].mean(),
@@ -112,19 +115,23 @@ col2.metric(
     )
 )
 
-col3.metric(
-    "Average Prenatal Controls",
-    round(
+with col3:
+    with st.container(border=True):
+        st.metric(
+            "Average Prenatal Controls",
+            round(
         df_filtered["prenatal_control_count"].mean(),
         1
     )
 )
 
-col4.metric(
-    "Multiple Pregnancy (%)",
-    round(
-        df_filtered["multiple_pregnancy"].mean() * 100,
-        1
+with col4:
+    with st.container(border=True):
+        st.metric(
+            "Multiple Pregnancy (%)",
+            round(
+                df_filtered["multiple_pregnancy"].mean() * 100,
+                1
     )
 )
 

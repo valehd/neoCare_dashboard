@@ -7,7 +7,6 @@ import pandas as pd
 from components.theme import neocare_colors
 from components.footer import show_footer
 from components.sidebar import show_sidebar
-from components.header import show_header
 from database.queries.deliveries import get_deliveries
 
 
@@ -15,7 +14,6 @@ from database.queries.deliveries import get_deliveries
 # SIDEBAR-HEADER
 # ==========================
 show_sidebar()
-show_header()
 # ==========================
 # PAGE TITLE
 # ==========================
@@ -83,28 +81,37 @@ if selected_outcome != "All":
 # ==========================
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "Total Deliveries",
-    len(df_filtered)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Total Deliveries",
+            len(df_filtered)
+        )
 
-col2.metric(
-    "Avg Vaginal Exams",
-    round(
-        df_filtered["vaginal_examinations"].mean(),
-        1
-    )
-)
+with col2:
+    with st.container(border=True):
+        st.metric(
+            "Avg Vaginal Exams",
+            round(
+                df_filtered["vaginal_examinations"].mean(),
+                1
+            )
+        )
 
-col3.metric(
-    "Antibiotic Use (%)",
-    round(
-        df_filtered["antibiotics"].mean() * 100,
-        1
-    )
-)
 
-col4.metric(
+with col3:
+    with st.container(border=True):
+        st.metric(
+            "Antibiotic Use (%)",
+            round(
+                df_filtered["antibiotics"].mean() * 100,
+                1
+            )
+        )
+
+with col4:
+    with st.container(border=True):
+        st.metric(
     "Oxytocin Use (%)",
     round(
         df_filtered["oxytocin"].mean() * 100,

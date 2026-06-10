@@ -6,7 +6,6 @@ import plotly.express as px
 from components.theme import neocare_colors
 from components.footer import show_footer
 from components.sidebar import show_sidebar
-from components.header import show_header
 from database.queries.neonatal_outcomes import (
     get_neonatal_outcomes
 )
@@ -15,7 +14,7 @@ from database.queries.neonatal_outcomes import (
 # SIDEBAR - HEADER
 # ==========================
 show_sidebar()
-show_header()
+
 # ==========================
 # PAGE TITLE
 # ==========================
@@ -69,20 +68,26 @@ hospitalization_rate = (
 
 col1, col2, col3 = st.columns(3)
 
-col1.metric(
-    "Total Outcomes",
-    len(df_filtered)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Total Outcomes",
+            len(df_filtered)
+        )
 
-col2.metric(
+with col2:
+    with st.container(border=True):
+        st.metric(
     "Hospitalized",
     hospitalized
 )
 
-col3.metric(
-    "Hospitalization Rate (%)",
-    round(hospitalization_rate, 1)
-)
+with col3:
+    with st.container(border=True):
+        st.metric(
+            "Hospitalization Rate (%)",
+            round(hospitalization_rate, 1)
+        )
 
 # ==========================
 # DESTINATION DISTRIBUTION

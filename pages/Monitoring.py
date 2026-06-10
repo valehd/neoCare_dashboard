@@ -6,7 +6,6 @@ import plotly.express as px
 import pandas as pd
 from components.theme import neocare_colors
 from components.footer import show_footer
-from components.header import show_header
 from components.sidebar import show_sidebar
 from database.queries.neonatal_monitoring import (
     get_neonatal_controls
@@ -16,7 +15,6 @@ from database.queries.neonatal_monitoring import (
 # SIDEBAR- HEADER
 # ==========================
 show_sidebar()
-show_header()
 
 # ==========================
 # PAGE TITLE
@@ -54,25 +52,34 @@ if selected_hour != "All":
 # ==========================
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "Avg Heart Rate",
-    round(df_filtered["heart_rate"].mean(), 0)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Avg Heart Rate",
+            round(df_filtered["heart_rate"].mean(), 0)
+        )
 
-col2.metric(
-    "Avg Respiratory Rate",
-    round(df_filtered["respiratory_rate"].mean(), 0)
-)
 
-col3.metric(
+with col2:
+    with st.container(border=True):
+        st.metric(
+            "Avg Respiratory Rate",
+            round(df_filtered["respiratory_rate"].mean(), 0)
+        )
+
+with col3:
+    with st.container(border=True):
+        st.metric(
     "Avg Temperature",
     round(df_filtered["temperature"].mean(), 1)
 )
 
-col4.metric(
-    "Avg Oxygen Saturation",
-    round(df_filtered["oxygen_saturation"].mean(), 1)
-)
+with col4:
+    with st.container(border=True):
+        st.metric(
+            "Avg Oxygen Saturation",
+            round(df_filtered["oxygen_saturation"].mean(), 1)
+        )
 
 # ==========================
 # KPIs - ADAPTATION
@@ -89,15 +96,19 @@ st.divider()
 
 col1, col2 = st.columns(2)
 
-col1.metric(
-    "Urination Rate (%)",
-    round(urination_rate, 1)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Urination Rate (%)",
+            round(urination_rate, 1)
+        )
 
-col2.metric(
-    "Stool Elimination Rate (%)",
-    round(stool_rate, 1)
-)
+with col2:
+    with st.container(border=True):
+        st.metric(
+            "Stool Elimination Rate (%)",
+            round(stool_rate, 1)
+        )
 
 # ==========================
 # VITAL SIGNS DISTRIBUTION

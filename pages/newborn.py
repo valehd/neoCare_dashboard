@@ -6,7 +6,6 @@ import streamlit as st
 import plotly.express as px
 from components.footer import show_footer
 from components.sidebar import show_sidebar
-from components.header import show_header
 from components.theme import neocare_colors
 from database.queries.newborn import get_newborns
 
@@ -15,7 +14,7 @@ from database.queries.newborn import get_newborns
 # ==========================
 # SIDEBAR - HEADER
 # ==========================
-show_header()
+
 show_sidebar()
 
 
@@ -83,25 +82,33 @@ df_filtered = df_filtered[
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "Total Newborns",
-    len(df_filtered)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Total Newborns",
+            len(df_filtered)
+        )
 
-col2.metric(
+with col2:
+    with st.container(border=True):
+        st.metric(
     "Average Weight (g)",
     round(df_filtered["weight_gr"].mean(), 0)
 )
 
-col3.metric(
-    "Average APGAR 1",
-    round(df_filtered["apgar_1"].mean(), 1)
-)
+with col3:
+    with st.container(border=True):
+        st.metric(
+            "Average APGAR 1",
+            round(df_filtered["apgar_1"].mean(), 1)
+        )
 
-col4.metric(
-    "Average APGAR 5",
-    round(df_filtered["apgar_5"].mean(), 1)
-)
+with col4:
+    with st.container(border=True):
+        st.metric(
+            "Average APGAR 5",
+            round(df_filtered["apgar_5"].mean(), 1)
+        )
 
 st.divider()
 

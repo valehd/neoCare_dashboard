@@ -4,7 +4,6 @@
 import streamlit as st
 import plotly.express as px
 from components.theme import neocare_colors
-from components.header import show_header
 from components.footer import show_footer
 from components.sidebar import show_sidebar
 from database.queries.mothers import (
@@ -15,7 +14,7 @@ from database.queries.mothers import (
 # SIDEBAR- HEADER
 # ==========================
 show_sidebar()
-show_header()
+
 
 # ==========================
 # PAGE TITLE
@@ -103,15 +102,19 @@ if selected_blood != "All":
 # ==========================
 col1, col2 = st.columns(2)
 
-col1.metric(
-    "Total Mothers",
-    len(df_filtered)
-)
+with col1:
+    with st.container(border=True):
+        st.metric(
+            "Total Mothers",
+            len(df_filtered)
+        )
 
-col2.metric(
-    "Average Maternal Age",
-    round(df_filtered["age"].mean(), 1)
-)
+with col2:
+    with st.container(border=True):
+        st.metric(
+            "Average Maternal Age",
+            round(df_filtered["age"].mean(), 1)
+        )
 
 st.divider()
 
