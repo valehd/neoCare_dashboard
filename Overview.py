@@ -7,7 +7,6 @@ import pandas as pd
 from components.theme import neocare_colors
 from components.footer import show_footer
 from components.header import show_header
-from components.styles import neocare_css
 from components.sidebar import show_sidebar
 from database.queries.overview import (
     get_total_mothers,
@@ -27,8 +26,6 @@ st.set_page_config(
 )
 
 
-
-neocare_css()
 show_sidebar()
 show_header()
 

@@ -8,7 +8,6 @@ from components.theme import neocare_colors
 from components.footer import show_footer
 from components.header import show_header
 from components.sidebar import show_sidebar
-from components.styles import neocare_css
 from database.queries.neonatal_monitoring import (
     get_neonatal_controls
 )
@@ -17,7 +16,7 @@ from database.queries.neonatal_monitoring import (
 # SIDEBAR
 # ==========================
 show_sidebar()
-neocare_css()
+
 show_header()
 
 # ==========================

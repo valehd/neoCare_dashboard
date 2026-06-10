@@ -4,7 +4,6 @@
 import streamlit as st
 import plotly.express as px
 from components.theme import neocare_colors
-from components.styles import neocare_css
 from components.header import show_header
 from components.footer import show_footer
 from components.sidebar import show_sidebar
@@ -16,7 +15,6 @@ from database.queries.mothers import (
 # SIDEBAR
 # ==========================
 show_sidebar()
-neocare_css()
 show_header()
 # ==========================
 # PAGE TITLE
