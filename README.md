@@ -9,9 +9,6 @@ The project models the complete maternal-neonatal care pathway, from pregnancy a
 Developed as part of my transition from Neonatal Intensive Care Unit (NICU) Midwife to Software Engineering, NeoCare combines healthcare domain expertise with data analytics and software development.
 
 ---
-## Live Demo
-
-https://tu-app.streamlit.app
 
 ## Features
 
